@@ -47,7 +47,9 @@ if [ "$DRY_RUN" = "true" ]; then
   fi
   cog bump --auto  --dry-run || exit 1
   VERSION="$(cog bump --auto  --dry-run)"
-  echo "version=$VERSION" >>$GITHUB_OUTPUT
+  echo "version<<EOL" >> $GITHUB_OUTPUT
+  echo "$VERSION" >>$GITHUB_OUTPUT
+  echo "EOL" >> $GITHUB_OUTPUT
 fi
 
 if [ "$RELEASE" = "true" ]; then
